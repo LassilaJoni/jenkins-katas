@@ -2,12 +2,6 @@ pipeline {
   agent any
   stages {
     stage('Clone down') {
-      agent {
-        node {
-          label 'swarm'
-        }
-
-      }
       steps {
         stash(excludes: '.git', name: 'Exclude .git file')
       }
