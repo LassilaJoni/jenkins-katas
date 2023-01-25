@@ -29,7 +29,7 @@ pipeline {
 
           }
           steps {
-            sh 'ci/build-app.sh'
+            sh 'echo "JOOOOOOOOOOOOO"'
           }
         }
 
