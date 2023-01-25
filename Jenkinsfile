@@ -32,7 +32,6 @@ pipeline {
 
     stage('Test app') {
       steps {
-        unstash 'Restore'
         sh 'ci/unit-test-app.sh'
         sh 'junit \'app/build/test-results/test/TEST-*.xml\''
       }
