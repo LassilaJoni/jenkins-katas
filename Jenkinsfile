@@ -2,8 +2,14 @@ pipeline {
   agent any
   stages {
     stage('Clone down') {
+      agent {
+        node {
+          label 'swarm'
+        }
+
+      }
       steps {
-        echo 'Hello'
+        stash(excludes: '.git', name: 'Exclude .git file')
       }
     }
 
@@ -15,7 +21,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('build app') {
           agent {
             docker {
               image 'gradle:6-jdk11'
