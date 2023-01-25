@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Print') {
+    stage('Parallel execution') {
       steps {
         echo 'Hello'
       }
@@ -10,6 +10,18 @@ pipeline {
     stage('Echo') {
       steps {
         sh 'echo "Hello world"'
+      }
+    }
+
+    stage('build app') {
+      agent {
+        docker {
+          image 'gradle:6-jdk11'
+        }
+
+      }
+      steps {
+        sh 'ci/build-app.sh'
       }
     }
 
