@@ -4,7 +4,7 @@ pipeline {
     stage('Clone down') {
       agent {
         node {
-          label 'swarm'
+          label 'master-label'
         }
 
       }
